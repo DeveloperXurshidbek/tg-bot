@@ -6,6 +6,8 @@ const bot = new TelegramBot(config.BOT_TOKEN, {
 const chat_id = 1607457399
 const msg = 'Axvollaringiz yaxshimi? <a href="tg://user?id=1607457399">Xurshidbek</a>'
 
+bot.getUpdates()
+
 
 //===================== Sending message ======================
 
@@ -48,7 +50,11 @@ bot.sendMessage(chat_id, `${msg}`, {
 })
 
 bot.on("message", (d) => {
-    console.log(d);
+    if (d.text == "Yaxshi") {
+        bot.sendMessage(d.chat.id, msg, {
+            parse_mode: 'HTML'
+        })
+    }
 })
 
 
