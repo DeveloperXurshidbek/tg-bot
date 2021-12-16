@@ -3,7 +3,7 @@ const config = require('./config/config')
 const bot = new TelegramBot(config.BOT_TOKEN, {
     polling: true,
 })
-const chat_id = d.chat.id
+
 const msg = 'Axvollaringiz yaxshimi? <a href="tg://user?id=1607457399">Xurshidbek</a>'
 
 bot.getUpdates()
@@ -23,7 +23,12 @@ bot.getUpdates()
 
 //========================== Keyboard buttons =========================
 
-bot.sendMessage(chat_id, `${msg}`, {
+
+
+bot.on("message", (d) => {
+const chat_id = d.chat.id
+    if (d.text == "/start") {
+        bot.sendMessage(chat_id, `${msg}`, {
     parse_mode: "html",
     reply_markup: {
         keyboard: [
@@ -49,27 +54,8 @@ bot.sendMessage(chat_id, `${msg}`, {
 
 })
 
-bot.on("message", (d) => {
-    if (d.text == "Yaxshi") {
-        bot.sendMessage(d.chat.id, msg, {
-            parse_mode: 'HTML'
-        })
     }
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -77,7 +63,7 @@ bot.on("message", (d) => {
 //================================== Get bot data ================================================
 
 // bot.getMe().then(d => {
-//     console.log(d);
+//     
 // }).catch(e => {
 //     console.log(e.message);
 // })
