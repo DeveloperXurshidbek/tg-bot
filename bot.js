@@ -3,7 +3,7 @@ const config = require('./config/config')
 const bot = new TelegramBot(config.BOT_TOKEN, {
     polling: true,
 })
-const chat_id = msg.chat.id
+const chat_id = d.chat.id
 const msg = 'Axvollaringiz yaxshimi? <a href="tg://user?id=1607457399">Xurshidbek</a>'
 
 bot.getUpdates()
